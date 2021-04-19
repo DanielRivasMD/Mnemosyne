@@ -4,6 +4,24 @@ version = "0.1.0"
 authors = ["DanielRivasMD <danielrivasmd@gmail.com>"]
 edition = "2018"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "mnemosyne"
+path = "src/bin/main.rs"
+doc = false
+
+
+[lib]
+name = "mnemosyne"
+path = "src/mnemosyne.rs"
+
 
 [dependencies]
+clap = "3.0.0-beta.2"
+anyhow = "1.0.38"
+
+rusqlite = "0.23.1"
+skim = "0.8.2"
+termion = "1.5.5"
+confy = "0.4.0"
+serde = { version = "1.0", features = ["derive"] }
