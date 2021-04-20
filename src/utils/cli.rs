@@ -27,14 +27,14 @@ pub fn cli_mnemosyne() -> App<'static> {
     .version(crate_version!())
     .author(crate_authors!())
     .about("")
-  //.subcommand(App::new("edit"))
-  // .version(crate_version!())
-  // .author(crate_authors!())
-  // .about("")
-  // .subcommand(App::new("ls"))
-  // .version(crate_version!())
-  // .author(crate_authors!())
-  // .about("")
+    //.subcommand(App::new("edit"))
+    // .version(crate_version!())
+    // .author(crate_authors!())
+    // .about("")
+    .subcommand(App::new("list"))
+    .version(crate_version!())
+    .author(crate_authors!())
+    .about("")
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////

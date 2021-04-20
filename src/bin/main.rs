@@ -35,6 +35,11 @@ fn main() -> anyResult<()> {
     // ctrls::clio::mnemosyne_clio(matches)?;
   }
 
+  if let Some(matches) = matches.subcommand_matches("list") {
+    ctrls::list::mnemosyne_ls(matches, &conn);
+    // ctrls::clio::mnemosyne_clio(matches)?;
+  }
+
   //if let Some(matches) = matches.subcommand_matches("clio") {
   //ctrls::clio::mnemosyne_clio(matches);
   //// ctrls::clio::mnemosyne_clio(matches)?;
