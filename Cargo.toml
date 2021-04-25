@@ -20,7 +20,7 @@ path = "src/mnemosyne.rs"
 clap = "3.0.0-beta.2"
 anyhow = "1.0.38"
 
-rusqlite = "0.23.1"
+rusqlite = "0.25.1"
 skim = "0.8.2"
 termion = "1.5.5"
 confy = "0.4.0"
