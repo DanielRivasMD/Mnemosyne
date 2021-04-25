@@ -11,6 +11,9 @@ use rusqlite::NO_PARAMS;
 
 use rusqlite::{params, Connection, Result};
 
+use std::env::var;
+use std::path::PathBuf;
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 use crate::utils::cli::cli_mnemosyne;
@@ -26,7 +29,16 @@ use crate::utils::event;
 //}
 
 fn main() -> anyResult<()> {
-  let conn = Connection::open_in_memory()?;
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
+  //open connection to database
+  let home = var("HOME").unwrap();
+  let path_to_db: PathBuf = [home.as_str(), ".mnemosyne.db"].iter().collect();
+
+  //if !path_to_db.exists() {
+  //std::fs::create_dir_all(path_to_db).unwrap();
+  //}
+
+  let conn = Connection::open(path_to_db)?;
   //conn.execute(
   //"CREATE TABLE person (
   //id              INTEGER PRIMARY KEY,
