@@ -6,7 +6,7 @@ use mnemosyne::*;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 use anyhow::Result as anyResult;
-use rusqlite::NO_PARAMS;
+//use rusqlite::NO_PARAMS;
 //use rusqlite::{Connection, Result};
 
 use rusqlite::{params, Connection, Result};
@@ -17,6 +17,7 @@ use std::path::PathBuf;
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 use crate::utils::cli::cli_mnemosyne;
+use crate::utils::create;
 use crate::utils::event;
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -69,13 +70,15 @@ fn main() -> anyResult<()> {
   //println!("Found person {:?}", person.unwrap());
   //}
 
-  conn.execute(
-    "CREATE TABLE event (
-      id        INTEGER PRIMARY KEY,
-      content   TEXT NOT NULL
-      )",
-    [],
-  )?;
+  //conn.execute(
+  //"CREATE TABLE event (
+  //id        INTEGER PRIMARY KEY,
+  //content   TEXT NOT NULL
+  //)",
+  //[],
+  //)?;
+
+  create::create_db(&conn)?;
   println!("table created");
 
   let ev = event::Event {
@@ -135,15 +138,3 @@ fn main() -> anyResult<()> {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
-
-pub fn up(conn: &Connection) -> Result<()> {
-  conn.execute(
-    "create table if not exists events (
-     id integer primary key autoincrement,
-    summary text not null,
-    done bool not null
-         )",
-    NO_PARAMS,
-  )?;
-  Ok(())
-}
